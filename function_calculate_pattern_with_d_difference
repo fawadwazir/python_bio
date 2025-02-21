@@ -1,0 +1,19 @@
+__author__ = 'Fawad'
+
+# Function to count the pattern with approximate d difference in the sequence and pattern 
+def calc_hamming_distance(sequence, pattern, d):
+    count = 0
+    for i in range(len(sequence) - len(pattern) + 1):
+        hamming_number = 0
+        substring = sequence[i:i + len(pattern)]
+
+        for nucleotide1, nucleotide2 in zip(substring, pattern):
+            if nucleotide1 != nucleotide2:
+                hamming_number += 1
+
+        if hamming_number <= d:
+            count += 1
+
+    return print(count)
+
+calc_hamming_distance("CGCGCGGCCAAAAAGCCGAACGACCCAGGGGTTGTTGCTAAAGTAGTCCACCTATTTCCGAGGCGTCCGTCGTATGAATAGTGGCGGACCCTGACACAATGCAAATGGATCAATCTTAGGCATCATGGCCGCATATTAAGGTGTAATAGGTGGATCCGTATGTAAAAGTCGTAATCCACGAGATCGGACATTCACCGCTACCTATACCGTGTAGAGTGGCTGTCACGTTAAGCCTTTCCCCACGAATAAGACGGTTTAAATAGAATTGCCGGACAACATGACGCCCTTGTCCTATAGGTTGGAAGCCGGATAACTAGCCACCCTGCACAGCACCGATTGTATAGTACAGACAGACCTTGACTCTTTCAACATTAATT", "TGCAAAT", 2)
